@@ -6,23 +6,38 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:04:24 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/08 18:04:28 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/11 00:18:27 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_strcdup(char const *src, char c)
+static void	ft_clean(char **tab, int j)
+{
+	while (j >= 0)
+	{
+		free(tab[j]);
+		j--;
+	}
+	free(tab);
+}
+
+static int	ft_strcdup(char **tab, int j, char const *src, char c)
 {
 	char	*dest;
 	size_t	i;
+	int		x;
 
 	i = 0;
+	x = j;
 	while (src[i] && src[i] != c)
 		i++;
-	dest = (char*)malloc(sizeof(char) * (i + 1));
+	dest = (char *)malloc(sizeof(char) * (i + 1));
 	if (dest == NULL)
-		return (NULL);
+	{
+		ft_clean(tab, j);
+		return (0);
+	}
 	i = 0;
 	while (src[i] && src[i] != c)
 	{
@@ -30,7 +45,8 @@ static char		*ft_strcdup(char const *src, char c)
 		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	tab[j] = dest;
+	return (1);
 }
 
 static size_t	ft_count_words(char const *str, char c)
@@ -60,17 +76,7 @@ static	size_t	ft_new_word(char const *str, size_t i, char c)
 		return (0);
 }
 
-static void		ft_clean(char **tab, int j)
-{
-	while (j >= 0)
-	{
-		free(tab[j]);
-		j--;
-	}
-	free(tab);
-}
-
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -80,17 +86,15 @@ char			**ft_split(char const *s, char c)
 	j = 0;
 	if (!s)
 		return (NULL);
-	if (!(tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1))))
+	tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (tab == NULL)
 		return (NULL);
 	while (s[i])
 	{
 		if (ft_new_word(s, i, c) == 1)
 		{
-			if (!(tab[j] = ft_strcdup(s + i, c)))
-			{
-				ft_clean(tab, j);
+			if (ft_strcdup(tab, j, s + i, c) == 0)
 				return (NULL);
-			}
 			j++;
 		}
 		i++;

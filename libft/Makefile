@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 02:59:11 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/08 18:40:51 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/10 22:58:15 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = gcc
 
-FLAG = -I -g -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra
 
 SRC = ft_memset.c \
 		ft_bzero.c \
@@ -37,7 +37,7 @@ SRC = ft_memset.c \
 		ft_strlcat.c \
 		ft_strnstr.c \
 		ft_atoi.c \
-		ft_callo.c \
+		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
 		ft_strjoin.c \
@@ -83,10 +83,14 @@ bonus: $(BOB)
 $(BOB): $(BON) $(HDR)
 	@echo "\033[32m\nSources files compilation\t\t\t⚙️\n"
 	$(CC) $(FLAG) -c $(BON)
+	@echo "\033[36m\nLibrary creation\t\t\t\t🧱\n"
+	ar rc $(NAME) $(BOB)
+	ranlib $(NAME)
+	@echo "\033[35m\n$(NAME) has been created with success !\t\t🌈\n"
 
 clean:
 	@echo "\033[33m\nRemove objects files\t\t--->\t\t🗑\n"
-	/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJ) $(BOB)
 
 fclean: clean
 	@echo "\033[33m\nRemove $(NAME) file\t\t--->\t\t🗑\n"
