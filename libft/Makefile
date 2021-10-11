@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 02:59:11 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/11 02:49:00 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/11 16:29:34 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,15 @@ BON = ft_lstnew.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 
+UTI = ft_atol.c
+
 HDR = libft.h
 
 OBJ = $(SRC:%.c=%.o)
 
 BOB = $(BON:%.c=%.o)
+
+UOB = $(UTI:%.c=%.o)
 
 all: $(NAME)
 
@@ -88,9 +92,19 @@ $(BOB): $(BON) $(HDR)
 	ranlib $(NAME)
 	@echo "\033[35m\n$(NAME) has been created with success !\t\t🌈\n"
 
+utils: $(UOB)
+
+$(UOB): $(UTI) $(HDR)
+	@echo "\033[32m\nSources files compilation\t\t\t⚙️\n"
+	$(CC) $(FLAG) -c $(UTI)
+	@echo "\033[36m\nLibrary creation\t\t\t\t🧱\n"
+	ar rc $(NAME) $(UOB)
+	ranlib $(NAME)
+	@echo "\033[35m\n$(NAME) has been created with success !\t\t🌈\n"
+
 clean:
 	@echo "\033[33m\nRemove objects files\t\t--->\t\t🗑\n"
-	/bin/rm -f $(OBJ) $(BOB)
+	/bin/rm -f $(OBJ) $(BOB) $(UOB)
 
 fclean: clean
 	@echo "\033[33m\nRemove $(NAME) file\t\t--->\t\t🗑\n"
@@ -98,4 +112,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus utils

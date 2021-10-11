@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 17:25:04 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/11 15:51:42 by ivloisy          ###   ########.fr       */
+/*   Created: 2021/10/11 16:16:56 by ivloisy           #+#    #+#             */
+/*   Updated: 2021/10/11 17:22:41 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_stack
+long	ft_atol(const char *str)
 {
-	char	id;
-	t_list	*lst;
-}t_stack;
+	int		i;
+	int		sign;
+	long	nb;
 
-typedef struct s_ps
-{
-	t_stack	a;
-	t_stack	b;
-}t_ps;
-
-void	parsing(int ac, char **av, t_ps *ps);
-void	exit_error(int x);
-
-#endif
+	i = 0;
+	sign = 1;
+	nb = 0;
+	if (str[i] == '\0' || str[i] == '\e')
+		return (0);
+	while (str[i] < 33)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
+		i++;
+	}
+	return (nb * sign);
+}

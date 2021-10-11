@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/11 04:16:31 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/11 16:23:05 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ $(OBJ): $(SRC) $(HDR)
 $(LFT): ./libft/*.c ./libft/*.h
 	make -C libft/
 	make -C libft/ bonus
+	make -C libft/ utils
 
 clean:
 	@echo "\033[33m\nRemove objects files\t\t--->\t\t🗑\n"
