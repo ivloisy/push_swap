@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   exit_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 17:24:22 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/11 02:32:17 by ivloisy          ###   ########.fr       */
+/*   Created: 2021/10/11 04:09:11 by ivloisy           #+#    #+#             */
+/*   Updated: 2021/10/11 04:11:41 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void exit_error(int x)
 {
-	t_ps	ps;
-
-	parsing(ac, av, &ps);
-	return (EXIT_SUCCESS);
+	ft_putstr_fd("Error\n", 2);
+	exit(x);
 }

@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/08 17:23:07 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/11 04:16:31 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ FLAG = -Wall -Werror -Wextra
 
 SRCDIR = sources
 
-SRC = ./$(SRCDIR)/main.c
+SRC = ./$(SRCDIR)/push_swap.c \
+		./$(SRCDIR)/parsing.c \
+		./$(SRCDIR)/exit_error.c
 
-HDR = ./$(SRCDIR)/
+HDR = ./$(SRCDIR)/push_swap.h
 
 OBJDIR = objects
 
@@ -32,8 +34,8 @@ all: $(NAME)
 
 $(NAME): $(LFT) $(OBJ)
 	@echo "\033[36m\n$(NAME) creation\t\t\t\t🧱\n"
-	clang $(FLAG) -o $@ $+ -L minilibx/ -l X11 -l Xext -l m -l bsd -l mlx
-	@echo "\033[35m\n$(NAME) has been created with success !\t\t🌈\n"
+	$(CC) $(FLAG) -o $@ $+
+	@echo "\033[35m\n$(NAME) has been created with success !\t🌈\n"
 
 $(OBJ): $(SRC) $(HDR)
 	@echo "\033[32m\nSources files compilation\t\t\t⚙️\n"
@@ -43,6 +45,7 @@ $(OBJ): $(SRC) $(HDR)
 
 $(LFT): ./libft/*.c ./libft/*.h
 	make -C libft/
+	make -C libft/ bonus
 
 clean:
 	@echo "\033[33m\nRemove objects files\t\t--->\t\t🗑\n"
