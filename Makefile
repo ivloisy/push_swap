@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/11 16:23:05 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/13 12:36:25 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCDIR = sources
 
 SRC = ./$(SRCDIR)/push_swap.c \
 		./$(SRCDIR)/parsing.c \
-		./$(SRCDIR)/exit_error.c
+		./$(SRCDIR)/exit_error.c \
+		./$(SRCDIR)/swap.c \
+		./$(SRCDIR)/test_display.c
 
 HDR = ./$(SRCDIR)/push_swap.h
 
@@ -61,3 +63,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+#-g3 -fsanitize=address 
