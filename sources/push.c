@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:20:49 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/13 15:58:27 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/14 00:45:10 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	push_a(t_ps *ps, int p)
 {
-	t_list	*lst;
+	t_list	*tmp;
 
 	if (ps->b.lst->content)
 	{
-		lst = ps->b.lst;
+		tmp = ps->b.lst;
 		ps->b.lst = ps->b.lst->next;
-		lst->next = ps->a.lst;
-		ps->a.lst = lst;
+		tmp->next = ps->a.lst;
+		ps->a.lst = tmp;
 		if (p == 1)
 		{
 			ft_putstr_fd("pa", 1);
@@ -32,14 +32,14 @@ static void	push_a(t_ps *ps, int p)
 
 static void	push_b(t_ps *ps, int p)
 {
-	t_list	*lst;
+	t_list	*tmp;
 
 	if (ps->a.lst->content)
 	{
-		lst = ps->a.lst;
+		tmp = ps->a.lst;
 		ps->a.lst = ps->a.lst->next;
-		lst->next = ps->b.lst;
-		ps->b.lst = lst;
+		tmp->next = ps->b.lst;
+		ps->b.lst = tmp;
 		if (p == 1)
 		{
 			ft_putstr_fd("pb", 1);

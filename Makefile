@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/13 15:30:12 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/14 00:20:50 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = ./$(SRCDIR)/push_swap.c \
 		./$(SRCDIR)/exit_error.c \
 		./$(SRCDIR)/swap.c \
 		./$(SRCDIR)/push.c \
+		./$(SRCDIR)/rotate.c \
 		./$(SRCDIR)/test_display.c
 
 HDR = ./$(SRCDIR)/push_swap.h
