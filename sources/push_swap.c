@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:24:22 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/14 20:15:17 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 18:14:31 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int ac, char **av)
 	rotate(&ps, 'b', 1);
 	push(&ps, 'b', 1);
 	rotate(&ps, 'b', 1);
+	reverse_rotate(&ps, 'a', 1);
+	reverse_rotate(&ps, 'b', 1);
 	display(&ps);
 	system("leaks push_swap"); //
 	return (EXIT_SUCCESS);

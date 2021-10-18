@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:04:24 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/11 00:18:27 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 18:16:02 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ static int	ft_strcdup(char **tab, int j, char const *src, char c)
 {
 	char	*dest;
 	size_t	i;
-	int		x;
 
 	i = 0;
-	x = j;
 	while (src[i] && src[i] != c)
 		i++;
 	dest = (char *)malloc(sizeof(char) * (i + 1));

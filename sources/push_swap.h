@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:25:04 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/14 00:21:07 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/15 00:11:11 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	exit_error(int x, t_ps *ps);
 void	swap(t_ps *ps, int stack, int p);
 void	push(t_ps *ps, int stack, int p);
 void	rotate(t_ps *ps, int stack, int p);
+void	reverse_rotate(t_ps *ps, int stack, int p);
 
 void	display(t_ps *ps);//
 
