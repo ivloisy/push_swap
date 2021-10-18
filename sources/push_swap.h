@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:25:04 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/18 19:08:38 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 20:22:53 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	swap(t_ps *ps, int stack);
 void	push(t_ps *ps, int stack);
 void	rotate(t_ps *ps, int stack);
 void	reverse_rotate(t_ps *ps, int stack);
+void	sort(t_ps *ps);
 
 void	display(t_ps *ps);//
 

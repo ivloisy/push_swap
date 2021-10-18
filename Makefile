@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/15 15:52:26 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/18 21:02:26 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -g3 -fsanitize=address -Wall -Werror -Wextra
 
 SRCDIR = sources
 
@@ -25,6 +25,7 @@ SRC = ./$(SRCDIR)/push_swap.c \
 		./$(SRCDIR)/push.c \
 		./$(SRCDIR)/rotate.c \
 		./$(SRCDIR)/reverse_rotate.c \
+		./$(SRCDIR)/sort.c \
 		./$(SRCDIR)/test_display.c
 
 HDR = ./$(SRCDIR)/push_swap.h

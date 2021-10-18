@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:24:22 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/18 19:10:48 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/19 00:28:28 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@ int	main(int ac, char **av)
 {
 	t_ps	ps;
 
+/* 	int i = 1;
+	while (i < ac)
+	{
+		ft_putstr_fd(av[i], 1);
+		i++;
+	} */
 	parsing(ac, av, &ps);
-	swap(&ps, 'a');//
+/* 	swap(&ps, 'a');//
 	push(&ps, 'b');
 	rotate(&ps, 'a');
 	rotate(&ps, 'b');
@@ -26,9 +32,10 @@ int	main(int ac, char **av)
 	rotate(&ps, 'b');
 	reverse_rotate(&ps, 'a');
 	reverse_rotate(&ps, 'b');
-	reverse_rotate(&ps, 'r');
+	reverse_rotate(&ps, 'r'); */
 //	reverse_rotate(&ps, 'r');
-	display(&ps);
-	system("leaks push_swap"); //
+	sort(&ps);
+//	display(&ps);
+//	system("leaks push_swap"); //
 	return (EXIT_SUCCESS);
 }
