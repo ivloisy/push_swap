@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 19:37:32 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/13 13:07:28 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 19:07:59 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,17 @@ static void	swap_b(t_ps *ps, int p)
 	}
 }
 
-void	swap(t_ps *ps, int stack, int p)
+void	swap(t_ps *ps, int stack)
 {
 	if (stack == 'a')
-		swap_a(ps, p);
+		swap_a(ps, 1);
 	if (stack == 'b')
-		swap_b(ps, p);
+		swap_b(ps, 1);
 	if (stack == 's')
 	{
-		swap_a(ps, p);
-		swap_b(ps, p);
+		swap_a(ps, 0);
+		swap_b(ps, 0);
+		ft_putstr_fd("ss", 1);
+		ft_putchar_fd('\n', 1);
 	}
 }

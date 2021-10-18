@@ -6,13 +6,13 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:20:49 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/14 00:45:10 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 19:06:30 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_a(t_ps *ps, int p)
+static void	push_a(t_ps *ps)
 {
 	t_list	*tmp;
 
@@ -22,15 +22,12 @@ static void	push_a(t_ps *ps, int p)
 		ps->b.lst = ps->b.lst->next;
 		tmp->next = ps->a.lst;
 		ps->a.lst = tmp;
-		if (p == 1)
-		{
-			ft_putstr_fd("pa", 1);
-			ft_putchar_fd('\n', 1);
-		}
+		ft_putstr_fd("pa", 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
 
-static void	push_b(t_ps *ps, int p)
+static void	push_b(t_ps *ps)
 {
 	t_list	*tmp;
 
@@ -40,18 +37,15 @@ static void	push_b(t_ps *ps, int p)
 		ps->a.lst = ps->a.lst->next;
 		tmp->next = ps->b.lst;
 		ps->b.lst = tmp;
-		if (p == 1)
-		{
-			ft_putstr_fd("pb", 1);
-			ft_putchar_fd('\n', 1);
-		}
+		ft_putstr_fd("pb", 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
 
-void	push(t_ps *ps, int stack, int p)
+void	push(t_ps *ps, int stack)
 {
 	if (stack == 'a')
-		push_a(ps, p);
+		push_a(ps);
 	if (stack == 'b')
-		push_b(ps, p);
+		push_b(ps);
 }

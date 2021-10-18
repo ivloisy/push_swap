@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 00:07:34 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/18 18:13:51 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/18 19:04:16 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,17 @@ static void	reverse_rotate_a(t_ps *ps, int p)
 	}
 }
 
-void	reverse_rotate(t_ps *ps, int stack, int p)
+void	reverse_rotate(t_ps *ps, int stack)
 {
 	if (stack == 'a')
-		reverse_rotate_a(ps, p);
+		reverse_rotate_a(ps, 1);
 	if (stack == 'b')
-		reverse_rotate_b(ps, p);
+		reverse_rotate_b(ps, 1);
 	if (stack == 'r')
 	{
-		reverse_rotate_a(ps, p);
-		reverse_rotate_b(ps, p);
+		reverse_rotate_a(ps, 0);
+		reverse_rotate_b(ps, 0);
+		ft_putstr_fd("rrr", 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
