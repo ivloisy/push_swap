@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:03:31 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/19 00:27:42 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/21 02:10:41 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static void	check_arg(int ac, char **av, t_ps *ps)
 	while (++j < ac)
 	{
 		tab = ft_split(av[j], ' ');
+		if (!tab)
+			exit_error(EXIT_FAILURE, ps);
 		k = -1;
 		while (tab[++k])
 		{
 			i = 0;
-			if (tab[k] && tab[k][i] == '\0')
-				exit_error(EXIT_FAILURE, ps);
 			if (tab[k][i] == '-' || tab[k][i] == '+')
 				i++;
 			while (ft_isdigit(tab[k][i]))
@@ -92,9 +92,28 @@ static void	check_sort(t_ps *ps)
 
 void	parsing(int ac, char **av, t_ps *ps)
 {
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
 	if (ac < 2)
-		exit_error(EXIT_FAILURE, ps);
-	ps->l = ac - 1;
+		exit_error(EXIT_SUCCESS, ps);
+	while (++i < ac)
+	{
+		if (av[i][0] == '\0')
+			exit_error(EXIT_FAILURE, ps);
+		j = 0;
+		k = 0;
+		while (av[i][j])
+		{
+			if (ft_isdigit(av[i][j]) == 1)
+				k = 1;
+			j++;
+		}
+		if (k == 0)
+			exit_error(EXIT_FAILURE, ps);
+	}
 	check_arg(ac, av, ps);
 	check_dupli(ps);
 	check_sort(ps);
