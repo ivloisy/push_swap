@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 20:21:46 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/20 15:22:17 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/22 18:32:47 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,33 @@ static void	push_smaller(t_ps *ps)
 	}
 	rotate_push(ps, j);
 }
+/* 
+static void	sort_big(t_ps *ps)
+{
+	int	l;
+	int	o;
+	int	n;
+	int sl;
+
+	l = 0;
+	sl = ft_lstsize(ps->a.lst);
+	while (((sl - 1) >> l) != 0)
+	{
+		o = 0;
+		while (o < sl)
+		{
+			n = *(int *)ps->a.lst->content;
+			if (((n >> l) & 1) == 1)
+				rotate(ps, 'a');
+			else
+				push(ps, 'b');
+			o++;
+		}
+		while (ps->b.lst)
+			push(ps, 'a');
+		l++;
+	}
+} */
 
 void	sort(t_ps *ps)
 {
@@ -108,6 +135,6 @@ void	sort(t_ps *ps)
 			push(ps, 'a');
 		push(ps, 'a');
 	}
-/*	else if (l > 5)
+/* 	else if (l > 5)
 		sort_big(ps); */
 }

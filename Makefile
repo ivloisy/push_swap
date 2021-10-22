@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/20 21:39:28 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/22 00:41:50 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = ./$(SRCDIR)/push_swap.c \
 		./$(SRCDIR)/rotate.c \
 		./$(SRCDIR)/reverse_rotate.c \
 		./$(SRCDIR)/sort.c \
+		./$(SRCDIR)/simplification.c \
 		./$(SRCDIR)/test_display.c
 
 BON = ./$(SRCDIR)/checker_bonus.c

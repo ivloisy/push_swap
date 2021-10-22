@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:03:31 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/21 02:10:41 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/22 01:55:13 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ static void	check_arg(int ac, char **av, t_ps *ps)
 					|| ft_atol(tab[k]) < INT_MIN)
 				exit_error(EXIT_FAILURE, ps);
 			add_to_list(ps, tab[k]);
+			free (tab[k]);
+			tab[k] = NULL;
 		}
+		free(tab);
+		tab = NULL;
 	}
 }
 
