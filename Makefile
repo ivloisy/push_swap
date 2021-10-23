@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 16:55:50 by ivloisy           #+#    #+#              #
-#    Updated: 2021/10/23 02:01:27 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/10/23 02:57:08 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC = ./$(SRCDIR)/push_swap.c \
 		./$(SRCDIR)/rotate.c \
 		./$(SRCDIR)/reverse_rotate.c \
 		./$(SRCDIR)/sort.c \
-		./$(SRCDIR)/simplification.c
+		./$(SRCDIR)/simplification.c \
+		./$(SRCDIR)/test_display.c
 
 HDR = ./$(SRCDIR)/push_swap.h
 
