@@ -6,31 +6,11 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 00:20:58 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/22 18:28:56 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/23 01:22:28 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/* 
-static void	replace(t_ps *ps, int *tab)
-{
-	int	i;
-	int	j;
-	int *tmp;
-
-	i = 0;
-	tmp = tab;
-	while (i < ft_lstsize(ps->a.lst))
-	{
-		j = 0;
-		while (j < ft_lstsize(ps->a.lst))
-		{
-			if (tab[i] == )
-			j++;
-		}
-	}
-}
- */
 
 static void	order(t_ps *ps, int *tab)
 {
@@ -57,12 +37,27 @@ static void	order(t_ps *ps, int *tab)
 	}
 }
 
+static void	replace_lst(t_ps *ps, int *tmp)
+{
+	t_list	*lst;
+	int		i;
+
+	lst = ps->a.lst;
+	i = 0;
+	while (i < ft_lstsize(ps->a.lst))
+	{
+		*(int *)lst->content = tmp[i];
+		lst = lst->next;
+		i++;
+	}
+}
+
 static int	replace(t_ps *ps, int *tab)
 {
 	t_list	*lst;
-	int	i;
-	int	j;
-	int *tmp;
+	int		i;
+	int		j;
+	int		*tmp;
 
 	i = -1;
 	tmp = (int *)malloc(sizeof(int) * ft_lstsize(ps->a.lst));
@@ -79,22 +74,15 @@ static int	replace(t_ps *ps, int *tab)
 			lst = lst->next;
 		}
 	}
-	int y = 0;
-	while (y < ft_lstsize(ps->a.lst))
-	{
-		ft_putnbr_fd(tmp[y], 1);
-		ft_putchar_fd('\n', 1);
-		y++;
-	}
+	replace_lst(ps, tmp);
 	free (tmp);
 	return (1);
-}/* 
-	 */
+}
 
-static int  create_tab(t_ps *ps, int *tab)
+static int	create_tab(t_ps *ps, int *tab)
 {
-	t_list *lst;
-	int 	i;
+	t_list	*lst;
+	int		i;
 
 	lst = ps->a.lst;
 	i = 0;
@@ -110,27 +98,19 @@ static int  create_tab(t_ps *ps, int *tab)
 	return (1);
 }
 
-void    simplification(t_ps *ps)
+void	simplification(t_ps *ps)
 {
-	int *tab;
+	int	*tab;
 
 	tab = (int *)malloc(sizeof(int) * ft_lstsize(ps->a.lst));
 	if (tab == NULL)
-		exit_error(EXIT_FAILURE, ps);
+		exit_error(EXIT_FAILURE);
 	if (create_tab(ps, tab) == 0)
 	{
 		free (tab);
 		tab = NULL;
-		exit_error(EXIT_FAILURE, ps);
+		exit_error(EXIT_FAILURE);
 	}
- 	int i = 0;
-	while (i < ft_lstsize(ps->a.lst))
-	{
-		ft_putnbr_fd(tab[i], 1);
-		ft_putchar_fd('\n', 1);
-		i++;
-	}
- 	free (tab);
+	free(tab);
 	tab = NULL;
-/* 	ft_bzero(tab, sizeof(tab)); */
 }

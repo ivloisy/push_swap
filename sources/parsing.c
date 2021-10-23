@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:03:31 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/10/22 01:55:13 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/10/23 01:33:12 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ static void	add_to_list(t_ps *ps, char *s)
 
 	x = (int *)malloc(sizeof(int));
 	if (x == NULL)
-		exit_error(EXIT_FAILURE, ps);
+		exit_error(EXIT_FAILURE);
 	*x = ft_atoi(s);
 	lst = ft_lstnew(x);
 	ft_lstadd_back(&ps->a.lst, lst);
+	free (s);
+	s = NULL;
 }
 
 static void	check_arg(int ac, char **av, t_ps *ps)
@@ -36,8 +38,7 @@ static void	check_arg(int ac, char **av, t_ps *ps)
 	while (++j < ac)
 	{
 		tab = ft_split(av[j], ' ');
-		if (!tab)
-			exit_error(EXIT_FAILURE, ps);
+		protect_malloc(tab);
 		k = -1;
 		while (tab[++k])
 		{
@@ -48,13 +49,10 @@ static void	check_arg(int ac, char **av, t_ps *ps)
 				i++;
 			if (tab[k][i] != '\0' || ft_atol(tab[k]) > INT_MAX
 					|| ft_atol(tab[k]) < INT_MIN)
-				exit_error(EXIT_FAILURE, ps);
+				exit_error(EXIT_FAILURE);
 			add_to_list(ps, tab[k]);
-			free (tab[k]);
-			tab[k] = NULL;
 		}
-		free(tab);
-		tab = NULL;
+		ft_free(tab);
 	}
 }
 
@@ -70,7 +68,7 @@ void	check_dupli(t_ps *ps)
 		while (j)
 		{
 			if (*(int *)i->content == *(int *)j->content)
-				exit_error(EXIT_FAILURE, ps);
+				exit_error(EXIT_FAILURE);
 			j = j->next;
 		}
 		i = i->next;
@@ -91,24 +89,23 @@ static void	check_sort(t_ps *ps)
 		i = i->next;
 		j = j->next;
 	}
-	exit_error(EXIT_SUCCESS, ps);
+	exit_error(EXIT_SUCCESS);
 }
 
 void	parsing(int ac, char **av, t_ps *ps)
 {
 	int	i;
-	int	j;
-	int	k;
-
+//	int	j;
+//	int	k;
 	i = 0;
 	if (ac < 2)
-		exit_error(EXIT_SUCCESS, ps);
+		exit_error(EXIT_SUCCESS);
 	while (++i < ac)
 	{
 		if (av[i][0] == '\0')
-			exit_error(EXIT_FAILURE, ps);
-		j = 0;
-		k = 0;
+			exit_error(EXIT_FAILURE);
+/*		j = 0;
+ 		k = 0;
 		while (av[i][j])
 		{
 			if (ft_isdigit(av[i][j]) == 1)
@@ -116,7 +113,7 @@ void	parsing(int ac, char **av, t_ps *ps)
 			j++;
 		}
 		if (k == 0)
-			exit_error(EXIT_FAILURE, ps);
+			exit_error(EXIT_FAILURE); */
 	}
 	check_arg(ac, av, ps);
 	check_dupli(ps);
